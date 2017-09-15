@@ -17,11 +17,13 @@ class DefaultController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
         ]);
     }
 
     /**
+     * Simple doctrine use, no sql transaction
+     *
      * @Route("/doctrine", name="doctrine")
      */
     public function doctrineAction()
@@ -35,12 +37,17 @@ class DefaultController extends Controller
         return new JsonResponse();
     }
 
+    /**
+     * Test data.
+     *
+     * @return string
+     */
     private function getData()
     {
         $datetime = new \DateTime();
         return serialize(
             [
-                'id' => random_int(1,PHP_INT_MAX),
+                'id' => random_int(1, PHP_INT_MAX),
                 'desc' => 'Lorem ipsum',
                 'datetime' => $datetime->format('Y-m-d H:i:s')
             ]
