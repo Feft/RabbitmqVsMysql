@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
  * Data
  *
  * @ORM\Table(name="data_myisam")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DataRepository")
  */
 class DataMyisam
 {

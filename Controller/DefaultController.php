@@ -31,12 +31,13 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $data = new Data();
-        $data->setDescription($this->getData());
+        $data->setDescription(serialize($this->getData()));
         $em->persist($data);
         $em->flush();
 
         return new JsonResponse();
     }
+
     /**
      * Simple doctrine use, no sql transaction, MyISAM table engine
      *
@@ -46,7 +47,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $data = new DataMyisam();
-        $data->setDescription($this->getData());
+        $data->setDescription(serialize($this->getData()));
         $em->persist($data);
         $em->flush();
 
@@ -62,7 +63,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $data = new Data();
-        $data->setDescription($this->getData());
+        $data->setDescription(serialize($this->getData()));
 
         $em->getConnection()->beginTransaction();
         $em->persist($data);
@@ -79,7 +80,7 @@ class DefaultController extends Controller
      */
     public function rabbitmqAction()
     {
-        $this->get("old_sound_rabbit_mq.api_call_producer")->publish($this->getData());
+        $this->get("old_sound_rabbit_mq.api_call_producer")->publish(serialize($this->getData()));
 //        $this->get("old_sound_rabbit_mq.api_call_transient_producer")->publish($this->getData());
         return new JsonResponse();
     }
@@ -92,12 +93,11 @@ class DefaultController extends Controller
     private function getData()
     {
         $datetime = new \DateTime();
-        return serialize(
+        return
             [
                 'id' => random_int(1, PHP_INT_MAX),
                 'desc' => 'Lorem ipsum',
                 'datetime' => $datetime->format('Y-m-d H:i:s')
-            ]
-        );
+            ];
     }
 }
