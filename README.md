@@ -1,5 +1,5 @@
 # RabbitmqVsMysql
-performance comparison between RabbitMQ and Mysql with Doctrine.  
+performance comparison between RabbitMQ and Mysql with Doctrine, php 7.0.22
 First test Doctrine and Symfony 3.3.9:  
 ```bash 
 ab -n 500 -c 10 http://localhost/rabbitmq_vs_mysql/web/app.php/doctrine
@@ -68,4 +68,67 @@ Total:         14   97  44.4     91     293
 ```
 More results in results.ods file.
 
+### Required configuration:
+
+config.yml -> rabbit configuration:
+```
+# OldSoundRabbitMq Configuration
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host:     'localhost'
+            port:     5672
+            user:     'guest'
+            password: 'guest'
+            vhost:    '/'
+            lazy:     false
+    producers:
+        api_call:
+            connection:       default
+            exchange_options: {name: 'api-call', type: direct}
+            queue_options:    {name: 'api_call'}
+        api_call_transient:
+            connection:       default
+            exchange_options: {name: 'api_call_transient', type: direct}
+            queue_options:    {name: 'api_call_transient', durable: false}
+```
+
+services.yml -> producer configuration:
+```
+    producer_service:
+        class: AppBundle\Services\Producer
+        arguments: ["@old_sound_rabbit_mq.api_call_producer"]
+        #arguments: ["@old_sound_rabbit_mq.api_call_transient_producer"]
+```
+AppKernel-> registerBundles() function:
+```php
+public function registerBundles()
+{
+    $bundles = [
+        ...
+        new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
+    ];
+
+    ...
+
+    return $bundles;
+}
+```
+composer.json:
+```
+"require": {
+        "php": ">=5.5.9",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/orm": "^2.5",
+        "incenteev/composer-parameter-handler": "^2.0",
+        "sensio/distribution-bundle": "^5.0.19",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "symfony/monolog-bundle": "^3.1.0",
+        "symfony/polyfill-apcu": "^1.0",
+        "symfony/swiftmailer-bundle": "^2.3.10",
+        "symfony/symfony": "3.3.*",
+        "twig/twig": "^1.0||^2.0",
+        "php-amqplib/php-amqplib": ">=2.6.1"
+    },
+```
 
