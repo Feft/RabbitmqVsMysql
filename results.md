@@ -37,24 +37,23 @@ Server Hostname:        localhost
 Server Port:            80
 
 Document Path:          /rabbitmq_vs_mysql/web/app.php/doctrineTransaction
-Document Length:        495 bytes
+Document Length:        2 bytes
 
 Concurrency Level:      100
-Time taken for tests:   55.046 seconds
+Time taken for tests:   51.061 seconds
 Complete requests:      5000
 Failed requests:        0
-Non-2xx responses:      5000
-Total transferred:      3770000 bytes
-HTML transferred:       2475000 bytes
-Requests per second:    90.83 [#/sec] (mean)
-Time per request:       1100.924 [ms] (mean)
-Time per request:       11.009 [ms] (mean, across all concurrent requests)
-Transfer rate:          66.88 [Kbytes/sec] received
+Total transferred:      1160000 bytes
+HTML transferred:       10000 bytes
+Requests per second:    97.92 [#/sec] (mean)
+Time per request:       1021.220 [ms] (mean)
+Time per request:       10.212 [ms] (mean, across all concurrent requests)
+Transfer rate:          22.19 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   2.2      0      17
-Processing:   433 1097 293.5   1052    5493
-Waiting:      433 1060 290.1   1018    5493
-Total:        433 1098 294.5   1052    5493
+Connect:        0    0   1.8      0      15
+Processing:   115 1016 234.1    984    2665
+Waiting:      115  981 230.2    945    2540
+Total:        122 1016 233.8    984    2665
 ```
