@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Data
  *
  * @ORM\Table(name="data_myisam")
+ * @ORM\Entity()
  */
 class DataMyisam
 {
@@ -43,7 +44,7 @@ class DataMyisam
      *
      * @param string $description
      *
-     * @return Data
+     * @return DataMyisam
      */
     public function setDescription($description)
     {

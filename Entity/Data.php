@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Data
  *
  * @ORM\Table(name="data")
+ * @ORM\Entity()
  */
 class Data
 {
