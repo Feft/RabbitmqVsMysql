@@ -11,26 +11,26 @@ Server Software:        Apache/2.4.18
 Server Hostname:        localhost
 Server Port:            80
 
-Document Path:          /rabbitmq_vs_mysql/web/app.php/doctrine
+Document Path:          /rabbitmq_vs_mysql/web/app.php/doctrineMyisam
 Document Length:        2 bytes
 
 Concurrency Level:      10
-Time taken for tests:   9.832 seconds
+Time taken for tests:   4.684 seconds
 Complete requests:      500
 Failed requests:        0
 Total transferred:      116000 bytes
 HTML transferred:       1000 bytes
-Requests per second:    50.85 [#/sec] (mean)
-Time per request:       196.640 [ms] (mean)
-Time per request:       19.664 [ms] (mean, across all concurrent requests)
-Transfer rate:          11.52 [Kbytes/sec] received
+Requests per second:    106.75 [#/sec] (mean)
+Time per request:       93.676 [ms] (mean)
+Time per request:       9.368 [ms] (mean, across all concurrent requests)
+Transfer rate:          24.19 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   1.0      0       8
-Processing:    72  196 103.4    173    1298
-Waiting:       72  192 103.5    168    1298
-Total:         72  196 103.8    173    1306
+Connect:        0    0   1.3      0      15
+Processing:    21   93  29.1     90     207
+Waiting:       21   90  28.9     86     207
+Total:         21   93  29.2     90     208
 ```
 
 Second test RabbitMQ and Symfony 3.3.9:  
@@ -48,23 +48,22 @@ Document Path:          /rabbitmq_vs_mysql/web/app.php/rabbitmq
 Document Length:        2 bytes
 
 Concurrency Level:      10
-Time taken for tests:   8.364 seconds
+Time taken for tests:   8.285 seconds
 Complete requests:      500
 Failed requests:        0
 Total transferred:      116000 bytes
 HTML transferred:       1000 bytes
-Requests per second:    59.78 [#/sec] (mean)
-Time per request:       167.270 [ms] (mean)
-Time per request:       16.727 [ms] (mean, across all concurrent requests)
-Transfer rate:          13.54 [Kbytes/sec] received
-Transfer rate:          71.93 [Kbytes/sec] received
+Requests per second:    60.35 [#/sec] (mean)
+Time per request:       165.696 [ms] (mean)
+Time per request:       16.570 [ms] (mean, across all concurrent requests)
+Transfer rate:          13.67 [Kbytes/sec] received
+
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   1.0      0      10
-Processing:   105  166  28.5    164     298
-Waiting:      104  165  27.7    162     297
-Total:        105  167  28.5    164     298
-Total:         14   97  44.4     91     293
+Connect:        0    0   1.5      0      14
+Processing:    99  164  35.5    160     296
+Waiting:       99  163  34.4    159     295
+Total:         99  164  35.6    160     296
 ```
 More results in results.ods file.
 
