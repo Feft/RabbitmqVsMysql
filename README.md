@@ -65,7 +65,7 @@ Processing:    99  164  35.5    160     296
 Waiting:       99  163  34.4    159     295
 Total:         99  164  35.6    160     296
 ```
-More results in results.ods file.
+More results in results.ods and results.md files.
 
 ### Required configuration:
 
