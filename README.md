@@ -1,5 +1,5 @@
 # RabbitmqVsMysql
-performance comparison between RabbitMQ and Mysql with Doctrine, php 7.0.22
+performance comparison between RabbitMQ and Mysql with Doctrine, php 7.0.22.  
 First test Doctrine and Symfony 3.3.9:  
 ```bash 
 ab -n 500 -c 10 http://localhost/rabbitmq_vs_mysql/web/app.php/doctrine
